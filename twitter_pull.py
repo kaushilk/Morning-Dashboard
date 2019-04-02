@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-source = requests.get('https://twitter.com/CNN')
+news = "CNN"
+
+source = requests.get('https://twitter.com/' + str(news))
 soup = BeautifulSoup(source.text, 'html.parser')
 list = soup.find_all(class_ = 'content')
 
