@@ -1,11 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
 
+stories = []
 class TwitterStory:
     def __init__(self, name, text, time):
         self.name = name
         self.text = text
         self.time = time
+    def display_story(self):
+        print(self.name)
+        print(self.text)
+        print(self.time)
 
 def pull_stories(x):
     source = requests.get('https://twitter.com/' + str(x))
@@ -14,10 +19,11 @@ def pull_stories(x):
 
     n = 1
     for item in list:
-        print("\nCNN Story #", n , "\n------------")
+        name = x
         text = item.p.contents[0]
         time = item.small.a['title']
-        print(time, "\n", text, "\n------------")
+        story = TwitterStory(name, text, time)
+        stories.append(story)
         n += 1
 
-pull_stories("FoxNews")
+#
