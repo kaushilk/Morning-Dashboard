@@ -1,26 +1,25 @@
 from twitter_pull import pull_stories, stories
 
+f = open("feed/feed.txt", "a")
 
 pull_stories("FoxNews")
 pull_stories("CNN")
 
-
-print(stories[0].display_story())
-print("\n")
-print(stories[-1].display_story())
-print(len(stories))
-
-c = 0
-f = 0
 for x in stories:
-    if x.name == "CNN" and x.time[-10] == "5":
-        c += 1
-        print(x.name)
-        print(x.time)
+    if x.name == "CNN" and x.time[-10] == "0":
+        f.write(x.name)
+        f.write("---")
+        f.write(x.time)
+        f.write("\n")
+        f.write(x.text)
+        f.write("\n")
+
     else:
-        f += 1
-        print("FOX:", x.time)
+        f.write(x.name)
+        f.write("---")
+        f.write(x.time)
+        f.write("\n")
+        f.write(x.text)
+        f.write("\n")
 
-
-print("CNN: ", c)
-print("FOX: ", f)
+delete = input("Would you like to clear the feed? (y/n): ")
