@@ -1,6 +1,6 @@
 from twitter_pull import pull_stories, stories
 
-f = open("feed/feed.txt", "a")
+f = open("feed/feed.txt", "w")
 
 pull_stories("FoxNews")
 pull_stories("CNN")
@@ -21,5 +21,3 @@ for x in stories:
         f.write("\n")
         f.write(x.text)
         f.write("\n")
-
-delete = input("Would you like to clear the feed? (y/n): ")
