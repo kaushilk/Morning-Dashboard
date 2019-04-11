@@ -16,7 +16,7 @@ def pull_stories(x):
     source = requests.get('https://twitter.com/' + str(x))
     soup = BeautifulSoup(source.text, 'html.parser')
     list = soup.find_all(class_ = 'content')
-
+    
     n = 1
     for item in list:
         name = x
@@ -25,5 +25,3 @@ def pull_stories(x):
         story = TwitterStory(name, text, time)
         stories.append(story)
         n += 1
-
-#
