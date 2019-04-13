@@ -1,4 +1,5 @@
 from twitter_pull import pull_stories, stories
+from twitter_pull import TwitterStory
 
 f = open("feed/feed.txt", "w")
 
@@ -6,18 +7,9 @@ pull_stories("FoxNews")
 pull_stories("CNN")
 
 for x in stories:
-    if x.name == "CNN" and x.time[-10] == "0":
-        f.write(x.name)
-        f.write("---")
-        f.write(x.time)
-        f.write("\n")
-        f.write(x.text)
-        f.write("\n")
-
+    if x.name == "CNN" and x.time[-10] == "3":
+        TwitterStory.display_story(x)
+        TwitterStory.write_story(x, f)
     else:
-        f.write(x.name)
-        f.write("---")
-        f.write(x.time)
-        f.write("\n")
-        f.write(x.text)
-        f.write("\n")
+        TwitterStory.display_story(x)
+        TwitterStory.write_story(x, f)
