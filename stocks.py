@@ -1,7 +1,17 @@
 
 from yahoo_fin import stock_info as si
 
-print(si.get_live_price("aapl"))
+y = open("feed/stock.txt", "w")
+# y.write(str(time))
+def pull_stock_price(stock):
+    return si.get_live_price(stock)
+
+gainers = si.get_day_gainers()
+for x in gainers:
+    # y.write(x)
+    print(x['2'])
+    for y in x[0]:
+        print(y)
 
 
 
