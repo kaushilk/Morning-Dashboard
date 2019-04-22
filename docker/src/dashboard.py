@@ -7,8 +7,11 @@ time = datetime.datetime.now()
 day = str(time.day)[1]
 
 f = open("feed/feed.txt", "w")
+
 f.write(str(time))
 f.write("\n----------\n")
+f = open("feed/feed.txt", "r")
+print(f.read())
 
 pull_stories("FoxNews")
 pull_stories("CNN")
