@@ -1,5 +1,6 @@
 from twitter_pull import pull_stories, stories
 from twitter_pull import TwitterStory
+from to_do import full_name
 import datetime
 
 time = datetime.datetime.now()
@@ -21,3 +22,5 @@ for x in stories:
     else:
         TwitterStory.display_story(x)
         TwitterStory.write_story(x, f)
+
+print(full_name)
